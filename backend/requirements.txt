@@ -1,0 +1,11 @@
+ffmpeg-python
+google-genai
+Pillow
+faiss-cpu 
+numpy
+python-dotenv
+fastapi
+uvicorn[standard]
+python-multipart
+scenedetect[opencv]
+

@@ -1,0 +1,2811 @@
+{
+  "video_id": "sample_video_001",
+  "frames": [
+    {
+      "second": 0,
+      "llava_json": {
+        "second": 0,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sitting"
+          }
+        ],
+        "scene_summary": "A man is sitting and holding a sword."
+      },
+      "embedding_text": "Second: 0\nObjects: man, sword\nActions: sitting\nSummary: A man is sitting and holding a sword."
+    },
+    {
+      "second": 1,
+      "llava_json": {
+        "second": 1,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "chains"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sitting"
+          }
+        ],
+        "scene_summary": "A man with long hair and a mustache is sitting in a stone room, shackled with chains."
+      },
+      "embedding_text": "Second: 1\nObjects: man, chains\nActions: sitting\nSummary: A man with long hair and a mustache is sitting in a stone room, shackled with chains."
+    },
+    {
+      "second": 2,
+      "llava_json": {
+        "second": 2,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "wall"
+          },
+          {
+            "type": "stairs"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sitting"
+          }
+        ],
+        "scene_summary": "A man with long hair and a mustache is sitting against a wall, possibly in a dungeon or prison, as he is holding shackles."
+      },
+      "embedding_text": "Second: 2\nObjects: man, wall, stairs\nActions: sitting\nSummary: A man with long hair and a mustache is sitting against a wall, possibly in a dungeon or prison, as he is holding shackles."
+    },
+    {
+      "second": 3,
+      "llava_json": {
+        "second": 3,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candle"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man stands near a long table set with candles and food."
+      },
+      "embedding_text": "Second: 3\nObjects: man, candle, table\nActions: none\nSummary: A man stands near a long table set with candles and food."
+    },
+    {
+      "second": 4,
+      "llava_json": {
+        "second": 4,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candle"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in medieval clothing stands next to a long table set with candles and food."
+      },
+      "embedding_text": "Second: 4\nObjects: man, candle, table\nActions: none\nSummary: A man in medieval clothing stands next to a long table set with candles and food."
+    },
+    {
+      "second": 5,
+      "llava_json": {
+        "second": 5,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in a green velvet suit stands next to a long table set with candles and food."
+      },
+      "embedding_text": "Second: 5\nObjects: man, table, candles\nActions: none\nSummary: A man in a green velvet suit stands next to a long table set with candles and food."
+    },
+    {
+      "second": 6,
+      "llava_json": {
+        "second": 6,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sitting"
+          }
+        ],
+        "scene_summary": "A man is sitting."
+      },
+      "embedding_text": "Second: 6\nObjects: man\nActions: sitting\nSummary: A man is sitting."
+    },
+    {
+      "second": 7,
+      "llava_json": {
+        "second": 7,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "A man is holding a sword."
+      },
+      "embedding_text": "Second: 7\nObjects: man, sword\nActions: holding sword\nSummary: A man is holding a sword."
+    },
+    {
+      "second": 8,
+      "llava_json": {
+        "second": 8,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "A man with long hair and a mustache is holding a sword."
+      },
+      "embedding_text": "Second: 8\nObjects: man, sword\nActions: holding sword\nSummary: A man with long hair and a mustache is holding a sword."
+    },
+    {
+      "second": 9,
+      "llava_json": {
+        "second": 9,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "wall"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man with long hair and a mustache is standing next to a brick wall."
+      },
+      "embedding_text": "Second: 9\nObjects: man, wall\nActions: none\nSummary: A man with long hair and a mustache is standing next to a brick wall."
+    },
+    {
+      "second": 10,
+      "llava_json": {
+        "second": 10,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man with long hair and a mustache is talking."
+      },
+      "embedding_text": "Second: 10\nObjects: man\nActions: talking\nSummary: A man with long hair and a mustache is talking."
+    },
+    {
+      "second": 11,
+      "llava_json": {
+        "second": 11,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man is talking."
+      },
+      "embedding_text": "Second: 11\nObjects: man\nActions: talking\nSummary: A man is talking."
+    },
+    {
+      "second": 12,
+      "llava_json": {
+        "second": 12,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "wall"
+          },
+          {
+            "type": "cabinet"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking"
+          }
+        ],
+        "scene_summary": "A man is looking around in a room with a cabinet and a wall."
+      },
+      "embedding_text": "Second: 12\nObjects: man, wall, cabinet\nActions: looking\nSummary: A man is looking around in a room with a cabinet and a wall."
+    },
+    {
+      "second": 13,
+      "llava_json": {
+        "second": 13,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking"
+          }
+        ],
+        "scene_summary": "A man is looking to the left."
+      },
+      "embedding_text": "Second: 13\nObjects: man\nActions: looking\nSummary: A man is looking to the left."
+    },
+    {
+      "second": 14,
+      "llava_json": {
+        "second": 14,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man with long hair and a mustache is standing in a room."
+      },
+      "embedding_text": "Second: 14\nObjects: man\nActions: none\nSummary: A man with long hair and a mustache is standing in a room."
+    },
+    {
+      "second": 15,
+      "llava_json": {
+        "second": 15,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "wall"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking down"
+          }
+        ],
+        "scene_summary": "A man with long hair is looking down in a room with a stone wall."
+      },
+      "embedding_text": "Second: 15\nObjects: person, wall\nActions: looking down\nSummary: A man with long hair is looking down in a room with a stone wall."
+    },
+    {
+      "second": 16,
+      "llava_json": {
+        "second": 16,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man with long hair and a mustache is in a room."
+      },
+      "embedding_text": "Second: 16\nObjects: man\nActions: none\nSummary: A man with long hair and a mustache is in a room."
+    },
+    {
+      "second": 17,
+      "llava_json": {
+        "second": 17,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "grimacing"
+          }
+        ],
+        "scene_summary": "A man is grimacing."
+      },
+      "embedding_text": "Second: 17\nObjects: man\nActions: grimacing\nSummary: A man is grimacing."
+    },
+    {
+      "second": 18,
+      "llava_json": {
+        "second": 18,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candle"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man stands next to a long table with candles."
+      },
+      "embedding_text": "Second: 18\nObjects: man, candle, table\nActions: none\nSummary: A man stands next to a long table with candles."
+    },
+    {
+      "second": 19,
+      "llava_json": {
+        "second": 19,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in a green velvet robe stands next to a long table with many lit candles."
+      },
+      "embedding_text": "Second: 19\nObjects: man, candles, table\nActions: none\nSummary: A man in a green velvet robe stands next to a long table with many lit candles."
+    },
+    {
+      "second": 20,
+      "llava_json": {
+        "second": 20,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candle"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in a green velvet suit stands in a room with a long table set with candles."
+      },
+      "embedding_text": "Second: 20\nObjects: man, candle, table\nActions: none\nSummary: A man in a green velvet suit stands in a room with a long table set with candles."
+    },
+    {
+      "second": 21,
+      "llava_json": {
+        "second": 21,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "table"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in medieval clothing stands near a long table set with candles."
+      },
+      "embedding_text": "Second: 21\nObjects: man, candles, table\nActions: none\nSummary: A man in medieval clothing stands near a long table set with candles."
+    },
+    {
+      "second": 22,
+      "llava_json": {
+        "second": 22,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "grimacing"
+          }
+        ],
+        "scene_summary": "A man is grimacing."
+      },
+      "embedding_text": "Second: 22\nObjects: man\nActions: grimacing\nSummary: A man is grimacing."
+    },
+    {
+      "second": 23,
+      "llava_json": {
+        "second": 23,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "leaning"
+          }
+        ],
+        "scene_summary": "A man is leaning against a wall."
+      },
+      "embedding_text": "Second: 23\nObjects: man\nActions: leaning\nSummary: A man is leaning against a wall."
+    },
+    {
+      "second": 24,
+      "llava_json": {
+        "second": 24,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "leaning"
+          }
+        ],
+        "scene_summary": "A man is leaning against a wall."
+      },
+      "embedding_text": "Second: 24\nObjects: man\nActions: leaning\nSummary: A man is leaning against a wall."
+    },
+    {
+      "second": 25,
+      "llava_json": {
+        "second": 25,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "wielding sword"
+          }
+        ],
+        "scene_summary": "A man in medieval clothing is wielding a sword in a room lit by candles."
+      },
+      "embedding_text": "Second: 25\nObjects: man, sword, candles\nActions: wielding sword\nSummary: A man in medieval clothing is wielding a sword in a room lit by candles."
+    },
+    {
+      "second": 26,
+      "llava_json": {
+        "second": 26,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candle"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man in a green velvet robe sits at a table with candles."
+      },
+      "embedding_text": "Second: 26\nObjects: man, candle\nActions: none\nSummary: A man in a green velvet robe sits at a table with candles."
+    },
+    {
+      "second": 27,
+      "llava_json": {
+        "second": 27,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "A man is fencing with a sword in a room with candles."
+      },
+      "embedding_text": "Second: 27\nObjects: man, sword, candles\nActions: fencing\nSummary: A man is fencing with a sword in a room with candles."
+    },
+    {
+      "second": 28,
+      "llava_json": {
+        "second": 28,
+        "objects": [
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "A man is holding a sword."
+      },
+      "embedding_text": "Second: 28\nObjects: sword, person\nActions: holding sword\nSummary: A man is holding a sword."
+    },
+    {
+      "second": 29,
+      "llava_json": {
+        "second": 29,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man with a sword is fighting in a room with a table and candles."
+      },
+      "embedding_text": "Second: 29\nObjects: man, sword, table, candles\nActions: fighting\nSummary: A man with a sword is fighting in a room with a table and candles."
+    },
+    {
+      "second": 30,
+      "llava_json": {
+        "second": 30,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "fireplace"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "A man in medieval clothing holds a sword in a dining hall with a long table set with candles and a fireplace."
+      },
+      "embedding_text": "Second: 30\nObjects: man, sword, table, candles, fireplace\nActions: holding sword\nSummary: A man in medieval clothing holds a sword in a dining hall with a long table set with candles and a fireplace."
+    },
+    {
+      "second": 31,
+      "llava_json": {
+        "second": 31,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sword fight"
+          }
+        ],
+        "scene_summary": "Two people are engaged in a sword fight in a castle."
+      },
+      "embedding_text": "Second: 31\nObjects: person, sword, person\nActions: sword fight\nSummary: Two people are engaged in a sword fight in a castle."
+    },
+    {
+      "second": 32,
+      "llava_json": {
+        "second": 32,
+        "objects": [
+          {
+            "type": "sword"
+          },
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords."
+      },
+      "embedding_text": "Second: 32\nObjects: sword, man\nActions: fencing\nSummary: Two men are fencing with swords."
+    },
+    {
+      "second": 33,
+      "llava_json": {
+        "second": 33,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "walking"
+          }
+        ],
+        "scene_summary": "A man in medieval clothing is walking in a room with a table and candles."
+      },
+      "embedding_text": "Second: 33\nObjects: man, table, candles\nActions: walking\nSummary: A man in medieval clothing is walking in a room with a table and candles."
+    },
+    {
+      "second": 34,
+      "llava_json": {
+        "second": 34,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "lying"
+          }
+        ],
+        "scene_summary": "A man is lying down."
+      },
+      "embedding_text": "Second: 34\nObjects: man\nActions: lying\nSummary: A man is lying down."
+    },
+    {
+      "second": 35,
+      "llava_json": {
+        "second": 35,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "lying"
+          }
+        ],
+        "scene_summary": "A man is lying down."
+      },
+      "embedding_text": "Second: 35\nObjects: man\nActions: lying\nSummary: A man is lying down."
+    },
+    {
+      "second": 36,
+      "llava_json": {
+        "second": 36,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords in a dining hall."
+      },
+      "embedding_text": "Second: 36\nObjects: person, person, table, candles\nActions: fighting\nSummary: Two people are fighting with swords in a dining hall."
+    },
+    {
+      "second": 37,
+      "llava_json": {
+        "second": 37,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting."
+      },
+      "embedding_text": "Second: 37\nObjects: person, person\nActions: fighting\nSummary: Two people are fighting."
+    },
+    {
+      "second": 38,
+      "llava_json": {
+        "second": 38,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man is talking."
+      },
+      "embedding_text": "Second: 38\nObjects: man\nActions: talking\nSummary: A man is talking."
+    },
+    {
+      "second": 39,
+      "llava_json": {
+        "second": 39,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man stands in a room with a long table set for a feast, illuminated by candles."
+      },
+      "embedding_text": "Second: 39\nObjects: man, table, candles\nActions: none\nSummary: A man stands in a room with a long table set for a feast, illuminated by candles."
+    },
+    {
+      "second": 40,
+      "llava_json": {
+        "second": 40,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man is fighting with a sword in a dining hall."
+      },
+      "embedding_text": "Second: 40\nObjects: man, sword, table, candles\nActions: fighting\nSummary: A man is fighting with a sword in a dining hall."
+    },
+    {
+      "second": 41,
+      "llava_json": {
+        "second": 41,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candle"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "A man is holding a sword in a room with candles."
+      },
+      "embedding_text": "Second: 41\nObjects: man, sword, candle\nActions: holding sword\nSummary: A man is holding a sword in a room with candles."
+    },
+    {
+      "second": 42,
+      "llava_json": {
+        "second": 42,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "cabinet"
+          }
+        ],
+        "actions": [
+          {
+            "type": "standing"
+          }
+        ],
+        "scene_summary": "A man is standing in a room."
+      },
+      "embedding_text": "Second: 42\nObjects: man, cabinet\nActions: standing\nSummary: A man is standing in a room."
+    },
+    {
+      "second": 43,
+      "llava_json": {
+        "second": 43,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man with long hair and a mustache is standing indoors."
+      },
+      "embedding_text": "Second: 43\nObjects: man\nActions: none\nSummary: A man with long hair and a mustache is standing indoors."
+    },
+    {
+      "second": 44,
+      "llava_json": {
+        "second": 44,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man with long hair and a mustache is standing indoors."
+      },
+      "embedding_text": "Second: 44\nObjects: man\nActions: none\nSummary: A man with long hair and a mustache is standing indoors."
+    },
+    {
+      "second": 45,
+      "llava_json": {
+        "second": 45,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "cabinet"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man is talking in a room."
+      },
+      "embedding_text": "Second: 45\nObjects: man, cabinet\nActions: talking\nSummary: A man is talking in a room."
+    },
+    {
+      "second": 46,
+      "llava_json": {
+        "second": 46,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "blood"
+          }
+        ],
+        "actions": [
+          {
+            "type": "standing"
+          }
+        ],
+        "scene_summary": "A man is standing with blood on his shirt."
+      },
+      "embedding_text": "Second: 46\nObjects: man, blood\nActions: standing\nSummary: A man is standing with blood on his shirt."
+    },
+    {
+      "second": 47,
+      "llava_json": {
+        "second": 47,
+        "objects": [
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "struggling"
+          }
+        ],
+        "scene_summary": "A person is struggling in a dimly lit environment."
+      },
+      "embedding_text": "Second: 47\nObjects: person\nActions: struggling\nSummary: A person is struggling in a dimly lit environment."
+    },
+    {
+      "second": 48,
+      "llava_json": {
+        "second": 48,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "bowl of nuts"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "A man is in a room with a bowl of nuts."
+      },
+      "embedding_text": "Second: 48\nObjects: man, bowl of nuts\nActions: none\nSummary: A man is in a room with a bowl of nuts."
+    },
+    {
+      "second": 49,
+      "llava_json": {
+        "second": 49,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sword fight"
+          }
+        ],
+        "scene_summary": "Two people are engaged in a sword fight."
+      },
+      "embedding_text": "Second: 49\nObjects: person, sword, person\nActions: sword fight\nSummary: Two people are engaged in a sword fight."
+    },
+    {
+      "second": 50,
+      "llava_json": {
+        "second": 50,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two men are fighting with swords in a room."
+      },
+      "embedding_text": "Second: 50\nObjects: man, sword, man\nActions: fighting\nSummary: Two men are fighting with swords in a room."
+    },
+    {
+      "second": 51,
+      "llava_json": {
+        "second": 51,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting near a table with candles."
+      },
+      "embedding_text": "Second: 51\nObjects: person, person, table, candles\nActions: fighting\nSummary: Two people are fighting near a table with candles."
+    },
+    {
+      "second": 52,
+      "llava_json": {
+        "second": 52,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "fruit bowl"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting in a room with candles and a fruit bowl."
+      },
+      "embedding_text": "Second: 52\nObjects: person, person, fruit bowl, candles\nActions: fighting\nSummary: Two people are fighting in a room with candles and a fruit bowl."
+    },
+    {
+      "second": 53,
+      "llava_json": {
+        "second": 53,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "Two people are talking in a room with candles."
+      },
+      "embedding_text": "Second: 53\nObjects: person, person, candles\nActions: talking\nSummary: Two people are talking in a room with candles."
+    },
+    {
+      "second": 54,
+      "llava_json": {
+        "second": 54,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "candlestick"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "Two people are talking in a room with a candlestick."
+      },
+      "embedding_text": "Second: 54\nObjects: person, person, candlestick\nActions: talking\nSummary: Two people are talking in a room with a candlestick."
+    },
+    {
+      "second": 55,
+      "llava_json": {
+        "second": 55,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "Two people are in a room with candles and a sword."
+      },
+      "embedding_text": "Second: 55\nObjects: person, person, candles, sword\nActions: talking\nSummary: Two people are in a room with candles and a sword."
+    },
+    {
+      "second": 56,
+      "llava_json": {
+        "second": 56,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          },
+          {
+            "type": "holding sword"
+          }
+        ],
+        "scene_summary": "Two people are in a room, one is holding a sword and talking."
+      },
+      "embedding_text": "Second: 56\nObjects: person, person, sword\nActions: talking, holding sword\nSummary: Two people are in a room, one is holding a sword and talking."
+    },
+    {
+      "second": 57,
+      "llava_json": {
+        "second": 57,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sword fight"
+          }
+        ],
+        "scene_summary": "Two men are engaged in a sword fight."
+      },
+      "embedding_text": "Second: 57\nObjects: man, sword\nActions: sword fight\nSummary: Two men are engaged in a sword fight."
+    },
+    {
+      "second": 58,
+      "llava_json": {
+        "second": 58,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords in a room with candles."
+      },
+      "embedding_text": "Second: 58\nObjects: man, sword, candles\nActions: fencing\nSummary: Two men are fencing with swords in a room with candles."
+    },
+    {
+      "second": 59,
+      "llava_json": {
+        "second": 59,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "holding"
+          }
+        ],
+        "scene_summary": "A scene from a movie shows two people in a room with candles. One person is holding a sword."
+      },
+      "embedding_text": "Second: 59\nObjects: person, person, sword\nActions: holding\nSummary: A scene from a movie shows two people in a room with candles. One person is holding a sword."
+    },
+    {
+      "second": 60,
+      "llava_json": {
+        "second": 60,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "Two people are in a room with candles and a table with food."
+      },
+      "embedding_text": "Second: 60\nObjects: person, person\nActions: talking\nSummary: Two people are in a room with candles and a table with food."
+    },
+    {
+      "second": 61,
+      "llava_json": {
+        "second": 61,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords."
+      },
+      "embedding_text": "Second: 61\nObjects: person, sword\nActions: fencing\nSummary: Two men are fencing with swords."
+    },
+    {
+      "second": 62,
+      "llava_json": {
+        "second": 62,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two men are fighting with swords in a room with candles."
+      },
+      "embedding_text": "Second: 62\nObjects: person, sword, person\nActions: fighting\nSummary: Two men are fighting with swords in a room with candles."
+    },
+    {
+      "second": 63,
+      "llava_json": {
+        "second": 63,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords."
+      },
+      "embedding_text": "Second: 63\nObjects: person, sword\nActions: fighting\nSummary: Two people are fighting with swords."
+    },
+    {
+      "second": 64,
+      "llava_json": {
+        "second": 64,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "fruit bowl"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A fight scene is taking place in a large hall with tables laden with food and candles."
+      },
+      "embedding_text": "Second: 64\nObjects: person, sword, candles, fruit bowl\nActions: fighting\nSummary: A fight scene is taking place in a large hall with tables laden with food and candles."
+    },
+    {
+      "second": 65,
+      "llava_json": {
+        "second": 65,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "fruit basket"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two men are fighting with swords in a large hall. There is a fruit basket in the foreground and candles in the background."
+      },
+      "embedding_text": "Second: 65\nObjects: person, person, fruit basket, candles\nActions: fighting\nSummary: Two men are fighting with swords in a large hall. There is a fruit basket in the foreground and candles in the background."
+    },
+    {
+      "second": 66,
+      "llava_json": {
+        "second": 66,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "food"
+          },
+          {
+            "type": "candle"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords in a large room with a long table covered in food and candles."
+      },
+      "embedding_text": "Second: 66\nObjects: person, sword, table, food, candle\nActions: fencing\nSummary: Two men are fencing with swords in a large room with a long table covered in food and candles."
+    },
+    {
+      "second": 67,
+      "llava_json": {
+        "second": 67,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords in a large hall."
+      },
+      "embedding_text": "Second: 67\nObjects: person, person, sword, sword\nActions: fencing\nSummary: Two men are fencing with swords in a large hall."
+    },
+    {
+      "second": 68,
+      "llava_json": {
+        "second": 68,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two men are fighting with swords in a large hall."
+      },
+      "embedding_text": "Second: 68\nObjects: man, sword, man, sword\nActions: fighting\nSummary: Two men are fighting with swords in a large hall."
+    },
+    {
+      "second": 69,
+      "llava_json": {
+        "second": 69,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "fireplace"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "fruit bowl"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords in a large hall with a fireplace and tables laden with food."
+      },
+      "embedding_text": "Second: 69\nObjects: person, person, sword, fireplace, table, fruit bowl\nActions: fencing\nSummary: Two men are fencing with swords in a large hall with a fireplace and tables laden with food."
+    },
+    {
+      "second": 70,
+      "llava_json": {
+        "second": 70,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man is talking in a room with candles and decorations."
+      },
+      "embedding_text": "Second: 70\nObjects: man\nActions: talking\nSummary: A man is talking in a room with candles and decorations."
+    },
+    {
+      "second": 71,
+      "llava_json": {
+        "second": 71,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man in a green velvet shirt is talking in a room with a long table and candles."
+      },
+      "embedding_text": "Second: 71\nObjects: man, table, candles\nActions: talking\nSummary: A man in a green velvet shirt is talking in a room with a long table and candles."
+    },
+    {
+      "second": 72,
+      "llava_json": {
+        "second": 72,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "walking"
+          }
+        ],
+        "scene_summary": "A man is walking in a room."
+      },
+      "embedding_text": "Second: 72\nObjects: man\nActions: walking\nSummary: A man is walking in a room."
+    },
+    {
+      "second": 73,
+      "llava_json": {
+        "second": 73,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sword fight"
+          }
+        ],
+        "scene_summary": "Two people are engaged in a sword fight."
+      },
+      "embedding_text": "Second: 73\nObjects: person, person, sword\nActions: sword fight\nSummary: Two people are engaged in a sword fight."
+    },
+    {
+      "second": 74,
+      "llava_json": {
+        "second": 74,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "fireplace"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          }
+        ],
+        "actions": [
+          {
+            "type": "swinging sword"
+          }
+        ],
+        "scene_summary": "A man is swinging a sword in a room with a fireplace and a table with candles."
+      },
+      "embedding_text": "Second: 74\nObjects: man, sword, fireplace, table, candles\nActions: swinging sword\nSummary: A man is swinging a sword in a room with a fireplace and a table with candles."
+    },
+    {
+      "second": 75,
+      "llava_json": {
+        "second": 75,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "woman"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "A man and a woman are fencing."
+      },
+      "embedding_text": "Second: 75\nObjects: man, woman\nActions: fencing\nSummary: A man and a woman are fencing."
+    },
+    {
+      "second": 76,
+      "llava_json": {
+        "second": 76,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man and woman are fighting with swords."
+      },
+      "embedding_text": "Second: 76\nObjects: person, person, sword\nActions: fighting\nSummary: A man and woman are fighting with swords."
+    },
+    {
+      "second": 77,
+      "llava_json": {
+        "second": 77,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "sword fight"
+          }
+        ],
+        "scene_summary": "Two people are engaged in a sword fight."
+      },
+      "embedding_text": "Second: 77\nObjects: person, person, sword, sword\nActions: sword fight\nSummary: Two people are engaged in a sword fight."
+    },
+    {
+      "second": 78,
+      "llava_json": {
+        "second": 78,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords."
+      },
+      "embedding_text": "Second: 78\nObjects: person, person, sword\nActions: fighting\nSummary: Two people are fighting with swords."
+    },
+    {
+      "second": 79,
+      "llava_json": {
+        "second": 79,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords."
+      },
+      "embedding_text": "Second: 79\nObjects: person, person, sword\nActions: fighting\nSummary: Two people are fighting with swords."
+    },
+    {
+      "second": 80,
+      "llava_json": {
+        "second": 80,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "fire"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords near a fire."
+      },
+      "embedding_text": "Second: 80\nObjects: person, sword, person, fire\nActions: fighting\nSummary: Two people are fighting with swords near a fire."
+    },
+    {
+      "second": 81,
+      "llava_json": {
+        "second": 81,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting."
+      },
+      "embedding_text": "Second: 81\nObjects: person, person\nActions: fighting\nSummary: Two people are fighting."
+    },
+    {
+      "second": 82,
+      "llava_json": {
+        "second": 82,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "man"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "fire"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "Two men are in a room with candles and a fire."
+      },
+      "embedding_text": "Second: 82\nObjects: man, man, candles, fire\nActions: talking\nSummary: Two men are in a room with candles and a fire."
+    },
+    {
+      "second": 83,
+      "llava_json": {
+        "second": 83,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "woman"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "A man and a woman are fencing with swords."
+      },
+      "embedding_text": "Second: 83\nObjects: man, woman, sword\nActions: fencing\nSummary: A man and a woman are fencing with swords."
+    },
+    {
+      "second": 84,
+      "llava_json": {
+        "second": 84,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two men are fencing with swords."
+      },
+      "embedding_text": "Second: 84\nObjects: man, sword\nActions: fencing\nSummary: Two men are fencing with swords."
+    },
+    {
+      "second": 85,
+      "llava_json": {
+        "second": 85,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "Two people are fencing with swords in a room with candles."
+      },
+      "embedding_text": "Second: 85\nObjects: person, sword, person\nActions: fencing\nSummary: Two people are fencing with swords in a room with candles."
+    },
+    {
+      "second": 86,
+      "llava_json": {
+        "second": 86,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking shocked"
+          }
+        ],
+        "scene_summary": "A man with blood on his face looks shocked."
+      },
+      "embedding_text": "Second: 86\nObjects: man\nActions: looking shocked\nSummary: A man with blood on his face looks shocked."
+    },
+    {
+      "second": 87,
+      "llava_json": {
+        "second": 87,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man with blood on his face is talking."
+      },
+      "embedding_text": "Second: 87\nObjects: man\nActions: talking\nSummary: A man with blood on his face is talking."
+    },
+    {
+      "second": 88,
+      "llava_json": {
+        "second": 88,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking"
+          }
+        ],
+        "scene_summary": "A man with blood on his face is looking at something."
+      },
+      "embedding_text": "Second: 88\nObjects: man\nActions: looking\nSummary: A man with blood on his face is looking at something."
+    },
+    {
+      "second": 89,
+      "llava_json": {
+        "second": 89,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "woman"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man with a sword is talking to a woman."
+      },
+      "embedding_text": "Second: 89\nObjects: man, woman, sword\nActions: talking\nSummary: A man with a sword is talking to a woman."
+    },
+    {
+      "second": 90,
+      "llava_json": {
+        "second": 90,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "woman"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "fire"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fencing"
+          }
+        ],
+        "scene_summary": "A man and woman are fencing near a fire."
+      },
+      "embedding_text": "Second: 90\nObjects: man, woman, sword, fire\nActions: fencing\nSummary: A man and woman are fencing near a fire."
+    },
+    {
+      "second": 91,
+      "llava_json": {
+        "second": 91,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "fire"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man with a sword and blood on his hand is fighting another person near a fire."
+      },
+      "embedding_text": "Second: 91\nObjects: person, person, sword, fire\nActions: fighting\nSummary: A man with a sword and blood on his hand is fighting another person near a fire."
+    },
+    {
+      "second": 92,
+      "llava_json": {
+        "second": 92,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man with blood on his face is talking."
+      },
+      "embedding_text": "Second: 92\nObjects: man\nActions: talking\nSummary: A man with blood on his face is talking."
+    },
+    {
+      "second": 93,
+      "llava_json": {
+        "second": 93,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man with blood on his face is talking."
+      },
+      "embedding_text": "Second: 93\nObjects: man\nActions: talking\nSummary: A man with blood on his face is talking."
+    },
+    {
+      "second": 94,
+      "llava_json": {
+        "second": 94,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "fire"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting with swords near a fire."
+      },
+      "embedding_text": "Second: 94\nObjects: person, person, fire\nActions: fighting\nSummary: Two people are fighting with swords near a fire."
+    },
+    {
+      "second": 95,
+      "llava_json": {
+        "second": 95,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two people are fighting in a castle hall."
+      },
+      "embedding_text": "Second: 95\nObjects: person, person\nActions: fighting\nSummary: Two people are fighting in a castle hall."
+    },
+    {
+      "second": 96,
+      "llava_json": {
+        "second": 96,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "fruit bowl"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man in a green robe is fighting with another person in a room with candles and a fruit bowl."
+      },
+      "embedding_text": "Second: 96\nObjects: man, candles, fruit bowl\nActions: fighting\nSummary: A man in a green robe is fighting with another person in a room with candles and a fruit bowl."
+    },
+    {
+      "second": 97,
+      "llava_json": {
+        "second": 97,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "looking"
+          }
+        ],
+        "scene_summary": "A close-up of a man with long hair and a mustache looking intently."
+      },
+      "embedding_text": "Second: 97\nObjects: man\nActions: looking\nSummary: A close-up of a man with long hair and a mustache looking intently."
+    },
+    {
+      "second": 98,
+      "llava_json": {
+        "second": 98,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A close-up of a man talking."
+      },
+      "embedding_text": "Second: 98\nObjects: man\nActions: talking\nSummary: A close-up of a man talking."
+    },
+    {
+      "second": 99,
+      "llava_json": {
+        "second": 99,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "talking"
+          }
+        ],
+        "scene_summary": "A man is talking."
+      },
+      "embedding_text": "Second: 99\nObjects: man\nActions: talking\nSummary: A man is talking."
+    },
+    {
+      "second": 100,
+      "llava_json": {
+        "second": 100,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "close-up"
+          }
+        ],
+        "scene_summary": "A close-up of a man with a beard and blood on his face."
+      },
+      "embedding_text": "Second: 100\nObjects: man\nActions: close-up\nSummary: A close-up of a man with a beard and blood on his face."
+    },
+    {
+      "second": 101,
+      "llava_json": {
+        "second": 101,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "speaking"
+          }
+        ],
+        "scene_summary": "A man with blood on his face is speaking."
+      },
+      "embedding_text": "Second: 101\nObjects: man\nActions: speaking\nSummary: A man with blood on his face is speaking."
+    },
+    {
+      "second": 102,
+      "llava_json": {
+        "second": 102,
+        "objects": [
+          {
+            "type": "man"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man is fighting."
+      },
+      "embedding_text": "Second: 102\nObjects: man\nActions: fighting\nSummary: A man is fighting."
+    },
+    {
+      "second": 103,
+      "llava_json": {
+        "second": 103,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man is fighting with a sword."
+      },
+      "embedding_text": "Second: 103\nObjects: man, sword\nActions: fighting\nSummary: A man is fighting with a sword."
+    },
+    {
+      "second": 104,
+      "llava_json": {
+        "second": 104,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "tapestry"
+          }
+        ],
+        "actions": [
+          {
+            "type": "falling"
+          }
+        ],
+        "scene_summary": "A man in period clothing is falling near a table laden with food and candles in a room with a tapestry."
+      },
+      "embedding_text": "Second: 104\nObjects: man, table, candles, tapestry\nActions: falling\nSummary: A man in period clothing is falling near a table laden with food and candles in a room with a tapestry."
+    },
+    {
+      "second": 105,
+      "llava_json": {
+        "second": 105,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          },
+          {
+            "type": "candles"
+          },
+          {
+            "type": "table"
+          },
+          {
+            "type": "flowers"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "Two men are fighting with swords in a castle. There are candles and flowers on a table."
+      },
+      "embedding_text": "Second: 105\nObjects: man, man, sword, candles, table, flowers\nActions: fighting\nSummary: Two men are fighting with swords in a castle. There are candles and flowers on a table."
+    },
+    {
+      "second": 106,
+      "llava_json": {
+        "second": 106,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "fighting"
+          }
+        ],
+        "scene_summary": "A man with a sword is fighting another man in a castle."
+      },
+      "embedding_text": "Second: 106\nObjects: man, man, sword\nActions: fighting\nSummary: A man with a sword is fighting another man in a castle."
+    },
+    {
+      "second": 107,
+      "llava_json": {
+        "second": 107,
+        "objects": [
+          {
+            "type": "man"
+          },
+          {
+            "type": "man"
+          },
+          {
+            "type": "sword"
+          }
+        ],
+        "actions": [
+          {
+            "type": "standing"
+          },
+          {
+            "type": "lying"
+          }
+        ],
+        "scene_summary": "A man stands with a sword over a man lying on the floor."
+      },
+      "embedding_text": "Second: 107\nObjects: man, man, sword\nActions: standing, lying\nSummary: A man stands with a sword over a man lying on the floor."
+    },
+    {
+      "second": 108,
+      "llava_json": {
+        "second": 108,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "movie poster"
+          }
+        ],
+        "actions": [
+          {
+            "type": "standing"
+          },
+          {
+            "type": "lying down"
+          }
+        ],
+        "scene_summary": "A scene from a movie with a person standing over another person lying down, with a movie poster in the background."
+      },
+      "embedding_text": "Second: 108\nObjects: person, person, movie poster\nActions: standing, lying down\nSummary: A scene from a movie with a person standing over another person lying down, with a movie poster in the background."
+    },
+    {
+      "second": 109,
+      "llava_json": {
+        "second": 109,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "This image is a screen capture from a video, featuring the movie \"The Princess Bride\" and a call to action to watch more clips."
+      },
+      "embedding_text": "Second: 109\nObjects: none\nActions: none\nSummary: This image is a screen capture from a video, featuring the movie \"The Princess Bride\" and a call to action to watch more clips."
+    },
+    {
+      "second": 110,
+      "llava_json": {
+        "second": 110,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows a collage of scenes from the movie \"The Princess Bride\"."
+      },
+      "embedding_text": "Second: 110\nObjects: none\nActions: none\nSummary: The image shows a collage of scenes from the movie \"The Princess Bride\"."
+    },
+    {
+      "second": 111,
+      "llava_json": {
+        "second": 111,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "This image shows a collage of scenes from the movie The Princess Bride."
+      },
+      "embedding_text": "Second: 111\nObjects: none\nActions: none\nSummary: This image shows a collage of scenes from the movie The Princess Bride."
+    },
+    {
+      "second": 112,
+      "llava_json": {
+        "second": 112,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows a collage of scenes from the movie \"The Princess Bride\"."
+      },
+      "embedding_text": "Second: 112\nObjects: none\nActions: none\nSummary: The image shows a collage of scenes from the movie \"The Princess Bride\"."
+    },
+    {
+      "second": 113,
+      "llava_json": {
+        "second": 113,
+        "objects": [
+          {
+            "type": "movie poster"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "The image shows a movie clip compilation with the movie poster for \"The Princess Bride\" on the left and other movie clips on the right. There are also text overlays for \"Subscribe\" and \"Click above to watch more clips\"."
+      },
+      "embedding_text": "Second: 113\nObjects: movie poster, text, text, text\nActions: none\nSummary: The image shows a movie clip compilation with the movie poster for \"The Princess Bride\" on the left and other movie clips on the right. There are also text overlays for \"Subscribe\" and \"Click above to watch more clips\"."
+    },
+    {
+      "second": 114,
+      "llava_json": {
+        "second": 114,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "This image is a compilation of scenes from the movie 'The Princess Bride' and includes promotional text for Fandango Movieclips."
+      },
+      "embedding_text": "Second: 114\nObjects: none\nActions: none\nSummary: This image is a compilation of scenes from the movie 'The Princess Bride' and includes promotional text for Fandango Movieclips."
+    },
+    {
+      "second": 115,
+      "llava_json": {
+        "second": 115,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+      },
+      "embedding_text": "Second: 115\nObjects: none\nActions: none\nSummary: The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+    },
+    {
+      "second": 116,
+      "llava_json": {
+        "second": 116,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image is an advertisement for Fandango Movieclips, promoting hot new trailers and their app."
+      },
+      "embedding_text": "Second: 116\nObjects: none\nActions: none\nSummary: The image is an advertisement for Fandango Movieclips, promoting hot new trailers and their app."
+    },
+    {
+      "second": 117,
+      "llava_json": {
+        "second": 117,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+      },
+      "embedding_text": "Second: 117\nObjects: none\nActions: none\nSummary: The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+    },
+    {
+      "second": 118,
+      "llava_json": {
+        "second": 118,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "This image is an advertisement for Fandango Movieclips, encouraging viewers to watch more trailers and download the app."
+      },
+      "embedding_text": "Second: 118\nObjects: none\nActions: none\nSummary: This image is an advertisement for Fandango Movieclips, encouraging viewers to watch more trailers and download the app."
+    },
+    {
+      "second": 119,
+      "llava_json": {
+        "second": 119,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+      },
+      "embedding_text": "Second: 119\nObjects: none\nActions: none\nSummary: The image is an advertisement for Fandango Movieclips, promoting new trailers and their app."
+    },
+    {
+      "second": 120,
+      "llava_json": {
+        "second": 120,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image is a promotional screen from Fandango Movieclips, advertising their app and encouraging viewers to subscribe to their channel. It also shows a clip of a movie featuring the actor Christopher Guest."
+      },
+      "embedding_text": "Second: 120\nObjects: none\nActions: none\nSummary: The image is a promotional screen from Fandango Movieclips, advertising their app and encouraging viewers to subscribe to their channel. It also shows a clip of a movie featuring the actor Christopher Guest."
+    },
+    {
+      "second": 121,
+      "llava_json": {
+        "second": 121,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows a screen capture from Fandango Movieclips, featuring three different people: Christopher Guest (actor), Mandy Patinkin (actor), and Rob Reiner (director)."
+      },
+      "embedding_text": "Second: 121\nObjects: none\nActions: none\nSummary: The image shows a screen capture from Fandango Movieclips, featuring three different people: Christopher Guest (actor), Mandy Patinkin (actor), and Rob Reiner (director)."
+    },
+    {
+      "second": 122,
+      "llava_json": {
+        "second": 122,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows a screen from Fandango Movieclips with three different movie clips. The first clip features actors Christopher Guest, the second clip features actor Mandy Patinkin, and the third clip features director Rob Reiner."
+      },
+      "embedding_text": "Second: 122\nObjects: none\nActions: none\nSummary: The image shows a screen from Fandango Movieclips with three different movie clips. The first clip features actors Christopher Guest, the second clip features actor Mandy Patinkin, and the third clip features director Rob Reiner."
+    },
+    {
+      "second": 123,
+      "llava_json": {
+        "second": 123,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows a screen capture from Fandango Movieclips, featuring actors Christopher Guest and Mandy Patinkin, and director Rob Reiner."
+      },
+      "embedding_text": "Second: 123\nObjects: none\nActions: none\nSummary: The image shows a screen capture from Fandango Movieclips, featuring actors Christopher Guest and Mandy Patinkin, and director Rob Reiner."
+    },
+    {
+      "second": 124,
+      "llava_json": {
+        "second": 124,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "The image shows three different people: Christopher Guest, Mandy Patinkin, and Rob Reiner. Christopher Guest and Mandy Patinkin are labeled as actors, while Rob Reiner is labeled as a director. The image is from Fandango Movieclips and encourages viewers to subscribe and click above to watch more clips."
+      },
+      "embedding_text": "Second: 124\nObjects: person, person, person\nActions: none\nSummary: The image shows three different people: Christopher Guest, Mandy Patinkin, and Rob Reiner. Christopher Guest and Mandy Patinkin are labeled as actors, while Rob Reiner is labeled as a director. The image is from Fandango Movieclips and encourages viewers to subscribe and click above to watch more clips."
+    },
+    {
+      "second": 125,
+      "llava_json": {
+        "second": 125,
+        "objects": [
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "The image shows three different people: Christopher Guest, Mandy Patinkin, and Rob Reiner. The image is from Fandango Movieclips and encourages viewers to subscribe."
+      },
+      "embedding_text": "Second: 125\nObjects: person, person, person\nActions: none\nSummary: The image shows three different people: Christopher Guest, Mandy Patinkin, and Rob Reiner. The image is from Fandango Movieclips and encourages viewers to subscribe."
+    },
+    {
+      "second": 126,
+      "llava_json": {
+        "second": 126,
+        "objects": [
+          {
+            "type": "knife"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "kill"
+          }
+        ],
+        "scene_summary": "The image shows three different scenes from a movie. The first scene shows a girl holding a knife. The second scene shows a person falling down a flight of stairs. The third scene shows a man with a gun."
+      },
+      "embedding_text": "Second: 126\nObjects: knife, person, person\nActions: kill\nSummary: The image shows three different scenes from a movie. The first scene shows a girl holding a knife. The second scene shows a person falling down a flight of stairs. The third scene shows a man with a gun."
+    },
+    {
+      "second": 127,
+      "llava_json": {
+        "second": 127,
+        "objects": [
+          {
+            "type": "Knife"
+          },
+          {
+            "type": "Bad Guy"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Kill"
+          }
+        ],
+        "scene_summary": "The image shows three different scenes from a movie. The first scene shows a girl holding a knife. The second scene shows a man falling down the stairs. The third scene shows a bad guy."
+      },
+      "embedding_text": "Second: 127\nObjects: Knife, Bad Guy\nActions: Kill\nSummary: The image shows three different scenes from a movie. The first scene shows a girl holding a knife. The second scene shows a man falling down the stairs. The third scene shows a bad guy."
+    },
+    {
+      "second": 128,
+      "llava_json": {
+        "second": 128,
+        "objects": [
+          {
+            "type": "knife"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "bad guy"
+          }
+        ],
+        "actions": [
+          {
+            "type": "kill"
+          }
+        ],
+        "scene_summary": "The image shows three scenes: one with a knife, one with a person being killed, and one with a bad guy."
+      },
+      "embedding_text": "Second: 128\nObjects: knife, person, bad guy\nActions: kill\nSummary: The image shows three scenes: one with a knife, one with a person being killed, and one with a bad guy."
+    },
+    {
+      "second": 129,
+      "llava_json": {
+        "second": 129,
+        "objects": [
+          {
+            "type": "Knife"
+          },
+          {
+            "type": "Person"
+          },
+          {
+            "type": "Bad Guy"
+          }
+        ],
+        "actions": [
+          {
+            "type": "Kill"
+          }
+        ],
+        "scene_summary": "The image shows three movie clips. The first clip shows a knife, the second clip shows a person being killed, and the third clip shows a bad guy."
+      },
+      "embedding_text": "Second: 129\nObjects: Knife, Person, Bad Guy\nActions: Kill\nSummary: The image shows three movie clips. The first clip shows a knife, the second clip shows a person being killed, and the third clip shows a bad guy."
+    },
+    {
+      "second": 130,
+      "llava_json": {
+        "second": 130,
+        "objects": [
+          {
+            "type": "knife"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "person"
+          }
+        ],
+        "actions": [
+          {
+            "type": "kill"
+          }
+        ],
+        "scene_summary": "The image shows three movie clips: one featuring a knife, one featuring a kill, and one featuring a bad guy."
+      },
+      "embedding_text": "Second: 130\nObjects: knife, person, person\nActions: kill\nSummary: The image shows three movie clips: one featuring a knife, one featuring a kill, and one featuring a bad guy."
+    },
+    {
+      "second": 131,
+      "llava_json": {
+        "second": 131,
+        "objects": [
+          {
+            "type": "knife"
+          },
+          {
+            "type": "person"
+          },
+          {
+            "type": "bad guy"
+          }
+        ],
+        "actions": [
+          {
+            "type": "kill"
+          }
+        ],
+        "scene_summary": "The image shows three movie clips labeled \"Knife\", \"Kill\", and \"Bad Guy\"."
+      },
+      "embedding_text": "Second: 131\nObjects: knife, person, bad guy\nActions: kill\nSummary: The image shows three movie clips labeled \"Knife\", \"Kill\", and \"Bad Guy\"."
+    },
+    {
+      "second": 132,
+      "llava_json": {
+        "second": 132,
+        "objects": [
+          {
+            "type": "logo"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "The image shows the Fandango Movieclips logo."
+      },
+      "embedding_text": "Second: 132\nObjects: logo\nActions: none\nSummary: The image shows the Fandango Movieclips logo."
+    },
+    {
+      "second": 133,
+      "llava_json": {
+        "second": 133,
+        "objects": [
+          {
+            "type": "logo"
+          }
+        ],
+        "actions": [
+          {
+            "type": "display"
+          }
+        ],
+        "scene_summary": "The image displays the Fandango Movieclips logo."
+      },
+      "embedding_text": "Second: 133\nObjects: logo\nActions: display\nSummary: The image displays the Fandango Movieclips logo."
+    },
+    {
+      "second": 134,
+      "llava_json": {
+        "second": 134,
+        "objects": [
+          {
+            "type": "logo"
+          }
+        ],
+        "actions": [],
+        "scene_summary": "The image shows the Fandango Movieclips logo."
+      },
+      "embedding_text": "Second: 134\nObjects: logo\nActions: none\nSummary: The image shows the Fandango Movieclips logo."
+    },
+    {
+      "second": 135,
+      "llava_json": {
+        "second": 135,
+        "objects": [],
+        "actions": [],
+        "scene_summary": "The image shows the Fandango Movieclips logo."
+      },
+      "embedding_text": "Second: 135\nObjects: none\nActions: none\nSummary: The image shows the Fandango Movieclips logo."
+    }
+  ]
+}

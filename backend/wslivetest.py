@@ -18,7 +18,7 @@ from tkinter import scrolledtext
 from google import genai
 
 # --- CONFIGURATION ---
-API_KEY = "AIzaSyDzS7Qed5bJCo10F0DytdiJ68nOcNriLT0"
+API_KEY = 
 MODEL = "gemini-2.5-flash-native-audio-preview-12-2025"
 
 CONFIG = {

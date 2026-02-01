@@ -1,0 +1,11 @@
+{
+  "video_id": "e1de2466-8940-47fa-a6f2-820f02da4c71",
+  "status": "completed",
+  "message": "Analysis completed successfully!",
+  "timestamp": 1769874241.74683,
+  "overall_progress": {
+    "percentage": 10,
+    "stage": "completed",
+    "stage_progress": 1.0
+  }
+}

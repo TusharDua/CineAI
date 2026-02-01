@@ -112,16 +112,16 @@ function App() {
     <div className="app">
       <div className="app-container">
         <header className="app-header">
-          <h1>CINEAI</h1>
-          <p>Video Analysis & Chat</p>
-          {availableVideos.length > 0 && (
-            <button 
-              className="select-video-btn"
-              onClick={() => setShowVideoSelector(true)}
-            >
-              📁 Select Previous Video ({availableVideos.length})
-            </button>
-          )}
+          <div className="header-content">
+            <h1>CINEAI</h1>
+            <p>Role-Based Intelligent Video Retrieval for Filmmakers</p>
+          </div>
+          <button 
+            className="select-video-btn"
+            onClick={() => setShowVideoSelector(true)}
+          >
+            📁 Select Previous Video {availableVideos.length > 0 && `(${availableVideos.length})`}
+          </button>
         </header>
         
         {error && (
@@ -139,19 +139,26 @@ function App() {
                 <button onClick={() => setShowVideoSelector(false)}>✕</button>
               </div>
               <div className="video-list">
-                {availableVideos.map((video) => (
-                  <div 
-                    key={video.video_id} 
-                    className="video-item"
-                    onClick={() => handleSelectExistingVideo(video)}
-                  >
-                    <div className="video-info">
-                      <h3>{video.filename}</h3>
-                      <p>Uploaded: {new Date(video.upload_time * 1000).toLocaleString()}</p>
-                      <p className="status-badge">✓ Ready to Query</p>
-                    </div>
+                {availableVideos.length === 0 ? (
+                  <div className="no-videos-message">
+                    <p>📹 No analyzed videos yet</p>
+                    <p className="subtext">Upload and analyze a video first, then you can select it from here next time.</p>
                   </div>
-                ))}
+                ) : (
+                  availableVideos.map((video) => (
+                    <div 
+                      key={video.video_id} 
+                      className="video-item"
+                      onClick={() => handleSelectExistingVideo(video)}
+                    >
+                      <div className="video-info">
+                        <h3>{video.filename}</h3>
+                        <p>Uploaded: {new Date(video.upload_time * 1000).toLocaleString()}</p>
+                        <p className="status-badge">✓ Ready to Query</p>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

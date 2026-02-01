@@ -1,42 +1,50 @@
 .app {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .app-container {
   background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  min-height: 600px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 30px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header-content {
+  flex: 1;
   text-align: center;
-  position: relative;
 }
 
 .app-header h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
 }
 
 .app-header p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 0.9;
+  margin: 0;
 }
 
 .select-video-btn {
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 2px solid white;
@@ -46,11 +54,15 @@
   font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .select-video-btn:hover {
   background: white;
   color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Video Selector Modal */
@@ -170,25 +182,45 @@
   margin-top: 0.5rem;
 }
 
+.no-videos-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #6b7280;
+}
+
+.no-videos-message p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.no-videos-message .subtext {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
 .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 30px;
-  min-height: 500px;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .upload-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
 .chat-section {
   display: flex;
   flex-direction: column;
   border-left: 2px solid #f0f0f0;
-  padding-left: 30px;
+  padding-left: 20px;
+  overflow: hidden;
 }
 
 .error-banner {
@@ -223,18 +255,57 @@
 }
 
 @media (max-width: 968px) {
+  .app-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 20px;
+  }
+  
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .app-header p {
+    font-size: 0.9rem;
+  }
+  
+  .select-video-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
   .main-content {
     grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
   }
   
   .chat-section {
     border-left: none;
     border-top: 2px solid #f0f0f0;
     padding-left: 0;
-    padding-top: 30px;
+    padding-top: 20px;
+  }
+  
+  .upload-section {
+    padding-right: 0;
   }
   
   .error-banner {
-    margin: 20px 20px 0;
+    margin: 15px 15px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 15px 20px;
+  }
+  
+  .app-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .main-content {
+    padding: 10px;
   }
 }

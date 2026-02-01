@@ -57,14 +57,14 @@ class VectorDBService:
     
     def build_vector_database(self, video_id: str, analysis_output: Dict[str, Any], analysis_service=None):
         """
-        Build dual FAISS vector databases (technical + content) from analysis output.
+        Build TRIPLE FAISS vector databases (technical + content + production) from analysis output.
         
         Args:
             video_id: Unique video identifier
             analysis_output: Analysis output dictionary with frames
             analysis_service: Optional AnalysisService instance for progress updates
         """
-        logger.info(f"💾 [VECTOR-DB-SERVICE] Starting DUAL vector database construction for video_id: {video_id}")
+        logger.info(f"💾 [VECTOR-DB-SERVICE] Starting TRIPLE vector database construction for video_id: {video_id}")
         
         frames = analysis_output.get("frames", [])
         if not frames:
@@ -84,14 +84,15 @@ class VectorDBService:
         client = genai.Client(api_key=api_key)
         logger.info(f"✅ [VECTOR-DB-SERVICE] Gemini client initialized")
         
-        # Generate dual embeddings
+        # Generate triple embeddings
         technical_embeddings = []
         content_embeddings = []
+        production_embeddings = []
         metadata = []
         frames_dir = self.video_service.get_frames_dir(video_id)
         total_frames = len(frames)
         
-        logger.info(f"🔄 [VECTOR-DB-SERVICE] Starting DUAL embedding generation (technical + content)...")
+        logger.info(f"🔄 [VECTOR-DB-SERVICE] Starting TRIPLE embedding generation (technical + content + production)...")
         start_time = time.time()
         
         for idx, frame in enumerate(frames, 1):
@@ -99,9 +100,10 @@ class VectorDBService:
             scene_id = frame.get("scene_id", "scene_000")
             embedding_text_technical = frame.get("embedding_text_technical", "")
             embedding_text_content = frame.get("embedding_text_content", "")
+            embedding_text_production = frame.get("embedding_text_production", "")
             llava_json = frame.get("llava_json", {})
             
-            if not embedding_text_technical or not embedding_text_content:
+            if not embedding_text_technical or not embedding_text_content or not embedding_text_production:
                 logger.warning(f"⚠️  [VECTOR-DB-SERVICE] Skipping frame at second {second} (missing embedding text)")
                 continue
             
@@ -116,8 +118,13 @@ class VectorDBService:
                 content_embedding = self.get_embedding(embedding_text_content, client)
                 logger.debug(f"✅ [VECTOR-DB-SERVICE] Content embedding generated (dimension: {len(content_embedding)})")
                 
+                # Generate production embedding (for Producer)
+                production_embedding = self.get_embedding(embedding_text_production, client)
+                logger.debug(f"✅ [VECTOR-DB-SERVICE] Production embedding generated (dimension: {len(production_embedding)})")
+                
                 technical_embeddings.append(technical_embedding)
                 content_embeddings.append(content_embedding)
+                production_embeddings.append(production_embedding)
                 
                 # Store metadata
                 frame_filename = f"frame_{second:05d}.jpg"
@@ -130,6 +137,7 @@ class VectorDBService:
                     "frame_path": frame_path,
                     "embedding_text_technical": embedding_text_technical,
                     "embedding_text_content": embedding_text_content,
+                    "embedding_text_production": embedding_text_production,
                     "llava_json": llava_json
                 })
                 
@@ -141,18 +149,18 @@ class VectorDBService:
                 if idx % 10 == 0 or idx == total_frames:
                     elapsed = time.time() - start_time
                     current_progress = idx / total_frames if total_frames > 0 else 0
-                    logger.info(f"📊 [VECTOR-DB-SERVICE] Progress: {idx}/{total_frames} dual embeddings ({current_progress*100:.1f}%)")
+                    logger.info(f"📊 [VECTOR-DB-SERVICE] Progress: {idx}/{total_frames} triple embeddings ({current_progress*100:.1f}%)")
                     logger.info(f"⏱️  [VECTOR-DB-SERVICE] Elapsed: {elapsed:.1f}s | Avg: {elapsed/idx:.2f}s/frame")
                 
             except Exception as e:
                 logger.error(f"❌ [VECTOR-DB-SERVICE] Error processing frame at second {second}: {str(e)}", exc_info=True)
                 continue
         
-        if not technical_embeddings or not content_embeddings:
+        if not technical_embeddings or not content_embeddings or not production_embeddings:
             logger.error(f"❌ [VECTOR-DB-SERVICE] No embeddings generated")
             raise ValueError("No embeddings generated")
         
-        logger.info(f"✅ [VECTOR-DB-SERVICE] Generated {len(technical_embeddings)} technical and {len(content_embeddings)} content embeddings")
+        logger.info(f"✅ [VECTOR-DB-SERVICE] Generated {len(technical_embeddings)} technical, {len(content_embeddings)} content, and {len(production_embeddings)} production embeddings")
         
         # Build Technical Index (for Director role)
         logger.info(f"🔄 [VECTOR-DB-SERVICE] Building TECHNICAL vector database...")
@@ -162,7 +170,11 @@ class VectorDBService:
         logger.info(f"🔄 [VECTOR-DB-SERVICE] Building CONTENT vector database...")
         self._build_single_index(video_id, content_embeddings, "content")
         
-        # Save metadata (shared for both indices)
+        # Build Production Index (for Producer role)
+        logger.info(f"🔄 [VECTOR-DB-SERVICE] Building PRODUCTION vector database...")
+        self._build_single_index(video_id, production_embeddings, "production")
+        
+        # Save metadata (shared for all indices)
         metadata_file = self.get_metadata_file(video_id)
         logger.info(f"💾 [VECTOR-DB-SERVICE] Saving metadata to: {metadata_file}")
         with open(metadata_file, "w") as f:
@@ -170,9 +182,9 @@ class VectorDBService:
         logger.info(f"✅ [VECTOR-DB-SERVICE] Metadata saved ({len(metadata)} entries)")
         
         total_time = time.time() - start_time
-        logger.info(f"🎉 [VECTOR-DB-SERVICE] DUAL vector database construction completed!")
+        logger.info(f"🎉 [VECTOR-DB-SERVICE] TRIPLE vector database construction completed!")
         logger.info(f"⏱️  [VECTOR-DB-SERVICE] Total time: {total_time:.1f} seconds ({total_time/60:.1f} minutes)")
-        logger.info(f"📊 [VECTOR-DB-SERVICE] Final sizes - Technical: {len(technical_embeddings)}, Content: {len(content_embeddings)} vectors")
+        logger.info(f"📊 [VECTOR-DB-SERVICE] Final sizes - Technical: {len(technical_embeddings)}, Content: {len(content_embeddings)}, Production: {len(production_embeddings)} vectors")
     
     def _build_single_index(self, video_id: str, embeddings: List[List[float]], role: str):
         """Build and save a single FAISS index for a specific role."""
@@ -198,9 +210,10 @@ class VectorDBService:
         logger.info(f"✅ [VECTOR-DB-SERVICE] {role.upper()} index saved successfully")
     
     def vector_db_exists(self, video_id: str) -> bool:
-        """Check if vector databases exist for a video (both technical and content)."""
+        """Check if vector databases exist for a video (technical, content, and production)."""
         return (
             os.path.exists(self.get_vector_db_file(video_id, "technical")) and
             os.path.exists(self.get_vector_db_file(video_id, "content")) and
+            os.path.exists(self.get_vector_db_file(video_id, "production")) and
             os.path.exists(self.get_metadata_file(video_id))
         )

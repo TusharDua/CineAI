@@ -1,0 +1,45 @@
+# Cloud Build configuration for automated deployment
+steps:
+  # Build API image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cineai-api:$COMMIT_SHA', '-f', 'Dockerfile', '.']
+  
+  # Push API image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/cineai-api:$COMMIT_SHA']
+  
+  # Deploy API to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'cineai-api'
+      - '--image=gcr.io/$PROJECT_ID/cineai-api:$COMMIT_SHA'
+      - '--region=us-central1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--memory=4Gi'
+      - '--cpu=2'
+      - '--timeout=60s'
+      - '--set-env-vars=GCS_BUCKET=${_GCS_BUCKET},GEMINI_API_KEY=${_GEMINI_API_KEY},STORAGE_BACKEND=gcs'
+  
+  # Build Worker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/cineai-worker:$COMMIT_SHA', '-f', 'Dockerfile.worker', '.']
+  
+  # Push Worker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/cineai-worker:$COMMIT_SHA']
+
+images:
+  - 'gcr.io/$PROJECT_ID/cineai-api:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/cineai-worker:$COMMIT_SHA'
+
+substitutions:
+  _GCS_BUCKET: 'your-bucket-name'
+  _GEMINI_API_KEY: 'your-gemini-api-key'
+
+options:
+  machineType: 'N1_HIGHCPU_8'
+  timeout: '1200s'

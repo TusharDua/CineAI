@@ -16,7 +16,7 @@ export const videoAPI = {
     const formData = new FormData()
     formData.append('file', file)
     
-    const response = await api.post('/upload-video', formData, {
+    const response = await api.post('/api/upload-video', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -26,19 +26,19 @@ export const videoAPI = {
 
   // Start video analysis
   analyzeVideo: async (videoId) => {
-    const response = await api.post(`/analyze-video/${videoId}`)
+    const response = await api.post(`/api/analyze-video/${videoId}`)
     return response.data
   },
 
   // Get analysis status
   getStatus: async (videoId) => {
-    const response = await api.get(`/status/${videoId}`)
+    const response = await api.get(`/api/status/${videoId}`)
     return response.data
   },
 
   // List all videos
   listVideos: async () => {
-    const response = await api.get('/videos')
+    const response = await api.get('/api/videos')
     return response.data
   },
 }
@@ -47,7 +47,7 @@ export const videoAPI = {
 export const chatAPI = {
   // Query video with role
   query: async (videoId, query, role = 'actor', topK = 5) => {
-    const response = await api.post('/chat', {
+    const response = await api.post('/api/chat', {
       video_id: videoId,
       query,
       role,  // Add role parameter

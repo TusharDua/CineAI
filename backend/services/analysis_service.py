@@ -48,11 +48,47 @@ class AnalysisService:
         text = re.sub(r"```", "", text)
         return json.loads(text.strip())
     
+    def _fix_llm_json(self, text: str) -> str:
+        """Fix common LLM JSON mistakes: trailing commas, single quotes."""
+        text = text.strip()
+        # Remove trailing commas before ] or }
+        text = re.sub(r",\s*([}\]])", r"\1", text)
+        return text
+
+    def _extract_first_array(self, text: str) -> str:
+        """Extract first [...] from text (handles extra text from LLM)."""
+        start = text.find("[")
+        if start == -1:
+            return text
+        depth = 0
+        for i in range(start, len(text)):
+            if text[i] == "[":
+                depth += 1
+            elif text[i] == "]":
+                depth -= 1
+                if depth == 0:
+                    return text[start : i + 1]
+        return text[start:]
+
     def extract_json_array(self, text: str) -> List[Dict[str, Any]]:
-        """Clean markdown and extract JSON array."""
-        text = re.sub(r"```json", "", text)
+        """Clean markdown and extract JSON array; tolerate LLM malformed JSON."""
+        text = re.sub(r"```json", "", text, flags=re.IGNORECASE)
         text = re.sub(r"```", "", text)
-        data = json.loads(text.strip())
+        text = text.strip()
+        # Try to get just the array if there's extra text
+        if not text.startswith("["):
+            text = self._extract_first_array(text)
+        text = self._fix_llm_json(text)
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError as e:
+            # Last resort: try replacing single-quoted keys (risky in strings)
+            text_alt = re.sub(r"(?<=[{,]\s*)'([^']*)'(?=\s*:)", r'"\1"', text)
+            try:
+                data = json.loads(text_alt)
+            except json.JSONDecodeError:
+                logger.warning(f"JSON parse failed after cleanup: {e}. First 200 chars: {text[:200]!r}")
+                raise
         if isinstance(data, list):
             return data
         if isinstance(data, dict) and "frames" in data:
@@ -182,7 +218,37 @@ class AnalysisService:
             f"Summary: {scene_summary}"
         )
         
-        return technical_text, content_text
+        # Production embedding text (for Producer) - OBJECTIVE and BUSINESS-FOCUSED
+        prod_info = data.get("production_info", {})
+        prod_value = prod_info.get("production_value", "unknown")
+        location_type = prod_info.get("location_type", "unknown")
+        set_design = prod_info.get("set_design", "unknown")
+        props = prod_info.get("props", [])
+        if isinstance(props, list):
+            props_str = ', '.join([str(p) for p in props if p])
+        else:
+            props_str = str(props) if props else "none"
+        
+        costumes = prod_info.get("costumes", "unknown")
+        commercial_appeal = prod_info.get("commercial_appeal", "unknown")
+        budget_indication = prod_info.get("budget_indication", "unknown")
+        pacing = prod_info.get("pacing", "unknown")
+        
+        production_text = (
+            f"Second: {second}\n"
+            f"Production Value: {prod_value}\n"
+            f"Location Type: {location_type}\n"
+            f"Set Design: {set_design}\n"
+            f"Props: {props_str}\n"
+            f"Costumes: {costumes}\n"
+            f"Commercial Appeal: {commercial_appeal}\n"
+            f"Budget Indication: {budget_indication}\n"
+            f"Pacing: {pacing}\n"
+            f"Setting: {setting_str}\n"
+            f"Summary: {scene_summary}"
+        )
+        
+        return technical_text, content_text, production_text
     
     def describe_image(self, image_path: str, second: int, client: genai.Client) -> Dict[str, Any]:
         """
@@ -208,6 +274,16 @@ CONTENT ANALYSIS (Actor's View):
 - Setting details: location specifics (beach, forest, room type, etc.), time of day, weather, atmosphere
 - Mood/Atmosphere: overall feeling (romantic, tense, peaceful, joyful, sad, mysterious, etc.)
 - Story context: what seems to be happening narratively
+
+PRODUCTION ANALYSIS (Producer's View):
+- Production value: high-budget, mid-budget, low-budget, independent, commercial, professional, amateur
+- Location type: studio set, on-location exterior, on-location interior, green screen, practical location
+- Set design: elaborate, minimal, realistic, stylized, period-specific, contemporary, futuristic
+- Props: visible important objects, vehicles, equipment (list specific items)
+- Costumes: period-appropriate, contemporary, costume design quality, wardrobe style
+- Commercial appeal: mainstream, niche, art-house, mass-market, targeted demographic
+- Budget indication: visible production elements suggesting budget level
+- Pacing: fast-paced action, slow contemplative, moderate, rhythmic, static, dynamic
 
 Return ONLY valid JSON (no markdown):
 {{
@@ -243,10 +319,20 @@ Return ONLY valid JSON (no markdown):
     "mood": "",
     "character_count": 0,
     "scene_summary": ""
+  }},
+  "production_info": {{
+    "production_value": "",
+    "location_type": "",
+    "set_design": "",
+    "props": [],
+    "costumes": "",
+    "commercial_appeal": "",
+    "budget_indication": "",
+    "pacing": ""
   }}
 }}
 
-Be DETAILED and SPECIFIC. Capture subtle emotions and atmospheric details.
+Be DETAILED and SPECIFIC. Capture subtle emotions, atmospheric details, and objective production elements.
 """
         
         img = PIL.Image.open(image_path)
@@ -310,12 +396,13 @@ Be DETAILED and SPECIFIC. Capture subtle emotions and atmospheric details.
         prompt = f"""You will receive {len(batch)} frames from a video. Frame order and their video seconds:
 {chr(10).join(f"Image {i+1}: second {sec}" for i, sec in enumerate(seconds_list))}
 
-For EACH frame, provide DETAILED technical cinematography AND rich content analysis.
+For EACH frame, provide DETAILED technical cinematography, rich content analysis, AND production/commercial analysis.
 Return a JSON array of exactly {len(batch)} objects, in the same order as the images.
 
 ANALYZE WITH DETAIL:
 - Technical: shot type, camera angle, lighting quality, color grading, visual mood
 - Content: character descriptions, specific actions, detailed emotions, setting, atmosphere, interactions
+- Production: production value, location type, set design, props, costumes, commercial appeal, budget indication, pacing
 - Emotions: Be specific (romantic, melancholic, joyful, tense, peaceful, not just "happy/sad")
 - Actions: Be specific (walking slowly, running quickly, embracing tenderly, not just "moving")
 - Setting: Detailed location (beach at sunset, dark forest, cozy room, not just "outdoor")
@@ -350,10 +437,20 @@ Each object schema:
     "mood": "",
     "character_count": 0,
     "scene_summary": ""
+  }},
+  "production_info": {{
+    "production_value": "",
+    "location_type": "",
+    "set_design": "",
+    "props": [],
+    "costumes": "",
+    "commercial_appeal": "",
+    "budget_indication": "",
+    "pacing": ""
   }}
 }}
 
-Return ONLY the JSON array. No markdown, no backticks. Be DETAILED and capture SUBTLE nuances."""
+Return ONLY the JSON array. No markdown, no backticks. Be DETAILED and capture SUBTLE nuances and OBJECTIVE production elements."""
         
         contents: List[Any] = [prompt]
         for path, _ in batch:
@@ -380,7 +477,8 @@ Return ONLY the JSON array. No markdown, no backticks. Be DETAILED and capture S
                         out.append({
                             "second": sec,
                             "technical_info": {},
-                            "content_info": {"objects": [], "actions": [], "emotions": [], "character_count": 0, "scene_summary": ""}
+                            "content_info": {"objects": [], "actions": [], "emotions": [], "character_count": 0, "scene_summary": ""},
+                            "production_info": {}
                         })
                 return out
             except Exception as e:
@@ -461,12 +559,13 @@ Return ONLY the JSON array. No markdown, no backticks. Be DETAILED and capture S
                 
                 for llava_json in frame_results:
                     second = llava_json.get("second", 0)
-                    technical_text, content_text = self.json_to_embedding_text_dual(llava_json)
+                    technical_text, content_text, production_text = self.json_to_embedding_text_dual(llava_json)
                     results.append({
                         "second": second,
                         "llava_json": llava_json,
                         "embedding_text_technical": technical_text,
-                        "embedding_text_content": content_text
+                        "embedding_text_content": content_text,
+                        "embedding_text_production": production_text
                     })
                 
                 current_progress = len(results) / total_frames

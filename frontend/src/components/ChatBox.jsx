@@ -5,7 +5,8 @@ import { chatAPI } from '../services/api'
 function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange }) {
   const [messages, setMessages] = useState({
     actor: [],
-    director: []
+    director: [],
+    producer: []
   })
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -39,59 +40,58 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
       if (!results || results.length === 0) {
         return {
           content: answer,
-          timestamps: []
+          timestamps: [],
+          formatted: true
         }
       }
 
       const timestamps = results.map(r => r.second)
-      const parts = []
       
-      // Show LLM answer first
-      parts.push(`${answer}\n\n`)
-      
-      if (results.length > 0) {
-        parts.push(`**Relevant Moment${results.length > 1 ? 's' : ''}:**\n\n`)
-        
-    results.forEach((result, index) => {
-      const timestamp = formatTimestamp(result.second)
-      let description = ''
-      
-      if (role === 'director') {
-        // Show technical information for director
-        const tech = result.technical_info || {}
-        description = `${tech.shot_type || 'unknown shot'}, ${tech.camera_angle || 'unknown angle'}, ${tech.lighting || 'unknown lighting'}`
-      } else {
-        // Show content information for actor
-        const content = result.content_info || {}
-        
-        // Handle new emotion format (object) vs old format (array)
-        let emotions_str = 'none'
-        if (content.emotions) {
-          if (typeof content.emotions === 'object' && !Array.isArray(content.emotions)) {
-            // New format: { primary: "romantic", secondary: [...], intensity: "high" }
-            emotions_str = content.emotions.primary || 'neutral'
-            if (content.emotions.secondary && content.emotions.secondary.length > 0) {
-              emotions_str += `, ${content.emotions.secondary.join(', ')}`
+      // Build structured response
+      const response = {
+        answer: answer,
+        moments: results.map((result, index) => {
+          const timestamp = formatTimestamp(result.second)
+          const summary = result.scene_summary || 'No description'
+          
+          let details = ''
+          if (role === 'director') {
+            const tech = result.technical_info || {}
+            details = `${tech.shot_type || 'unknown shot'}, ${tech.camera_angle || 'unknown angle'}, ${tech.lighting || 'unknown lighting'}`
+          } else if (role === 'producer') {
+            const prod = result.production_info || {}
+            const props = prod.props || []
+            const props_str = props.length > 0 ? props.join(', ') : 'none'
+            details = `${prod.production_value || 'unknown'} production, ${prod.location_type || 'unknown'} location, props: ${props_str}`
+          } else {
+            const content = result.content_info || {}
+            let emotions_str = 'none'
+            if (content.emotions) {
+              if (typeof content.emotions === 'object' && !Array.isArray(content.emotions)) {
+                emotions_str = content.emotions.primary || 'neutral'
+                if (content.emotions.secondary && content.emotions.secondary.length > 0) {
+                  emotions_str += `, ${content.emotions.secondary.join(', ')}`
+                }
+              } else if (Array.isArray(content.emotions)) {
+                emotions_str = content.emotions.map(e => e.type || e).join(', ') || 'none'
+              }
             }
-          } else if (Array.isArray(content.emotions)) {
-            // Old format: [{ type: "happy" }, ...]
-            emotions_str = content.emotions.map(e => e.type || e).join(', ') || 'none'
+            details = `${content.character_count || 0} character(s), emotions: ${emotions_str}`
           }
-        }
-        
-        description = `${content.character_count || 0} character(s), emotions: ${emotions_str}`
-      }
-      
-      const summary = result.scene_summary || 'No description'
-      parts.push(`${index + 1}. [${timestamp}](${result.second}) - ${summary}\n   ${description}\n`)
-    })
-        
-        parts.push('\nClick any timestamp to jump to that moment!')
+          
+          return {
+            timestamp,
+            second: result.second,
+            summary,
+            details
+          }
+        })
       }
       
       return {
-        content: parts.join(''),
-        timestamps
+        content: response,
+        timestamps,
+        formatted: true
       }
     }
     
@@ -116,6 +116,12 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
         // Show technical information for director
         const tech = result.technical_info || {}
         description = `${tech.shot_type || 'unknown shot'}, ${tech.camera_angle || 'unknown angle'}, ${tech.lighting || 'unknown lighting'}`
+      } else if (role === 'producer') {
+        // Show production information for producer
+        const prod = result.production_info || {}
+        const props = prod.props || []
+        const props_str = props.length > 0 ? props.join(', ') : 'none'
+        description = `${prod.production_value || 'unknown'} production, ${prod.location_type || 'unknown'} location, props: ${props_str}`
       } else {
         // Show content information for actor
         const content = result.content_info || {}
@@ -254,6 +260,10 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
     }
   }
 
+  const handleExampleClick = (question) => {
+    setInputValue(question)
+  }
+
   return (
     <div className="chat-box">
       <div className="chat-header">
@@ -274,6 +284,12 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
               >
                 🎬 Director
               </button>
+              <button
+                className={`role-button ${userRole === 'producer' ? 'active' : ''}`}
+                onClick={() => handleRoleChange('producer')}
+              >
+                💼 Production Crew
+              </button>
             </div>
           </div>
         )}
@@ -288,8 +304,9 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
               <div className="role-example-box">
                 <h4>🎭 Actor:</h4>
                 <ul>
-                  <li>"Show emotional scenes"</li>
-                  <li>"Where is the character angry?"</li>
+                  <li>"When did the character get angry?
+                  "</li>
+                  <li>"Order the anger scenes by the intensity of the emotion"</li>
                   <li>"Find dialogue moments"</li>
                 </ul>
               </div>
@@ -299,6 +316,14 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
                   <li>"Show wide angle shots"</li>
                   <li>"Find low lighting scenes"</li>
                   <li>"Where are close-ups?"</li>
+                </ul>
+              </div>
+              <div className="role-example-box">
+                <h4>💼 Producer:</h4>
+                <ul>
+                  <li>"Show high-budget scenes"</li>
+                  <li>"Find outdoor locations"</li>
+                  <li>"Where are props used?"</li>
                 </ul>
               </div>
             </div>
@@ -316,51 +341,97 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
             {currentMessages.length === 0 ? (
               <div className="empty-state">
                 <p>Ask me anything about the video!</p>
-                <div className="demo-suggestions-inline">
-                  <p className="suggestions-title">Example questions for {userRole === 'actor' ? 'Actor' : 'Director'}:</p>
-                  {userRole === 'actor' ? (
-                    <ul>
-                      <li>"Show emotional scenes"</li>
-                      <li>"Where are the characters?"</li>
-                      <li>"Find action sequences"</li>
-                      <li>"What emotions are shown?"</li>
-                    </ul>
-                  ) : (
-                    <ul>
-                      <li>"Show wide angle shots"</li>
-                      <li>"Find low lighting scenes"</li>
-                      <li>"Where are close-ups?"</li>
-                      <li>"Show outdoor scenes"</li>
-                    </ul>
-                  )}
-                </div>
               </div>
             ) : (
               currentMessages.map((message, index) => {
-                const formattedParts = message.role === 'assistant' 
-                  ? formatMessage(message.content, message.timestamps)
-                  : [{ type: 'text', content: message.content }]
+                // User messages - simple text
+                if (message.role === 'user') {
+                  return (
+                    <div key={index} className="message user-message">
+                      <div className="message-content">
+                        {message.content}
+                      </div>
+                    </div>
+                  )
+                }
                 
+                // Assistant messages - check if formatted
+                const content = message.content
+                
+                // Check if it's the new formatted structure
+                if (typeof content === 'object' && content !== null && content.answer) {
+                  // New formatted structure
+                  return (
+                    <div key={index} className="message assistant-message">
+                      <div className="message-content formatted-response">
+                        {/* Answer section */}
+                        <div className="answer-section">
+                          <div className="answer-icon">💡</div>
+                          <div className="answer-text">{content.answer}</div>
+                        </div>
+                        
+                        {/* Moments section */}
+                        {content.moments && content.moments.length > 0 && (
+                          <div className="moments-section">
+                            <div className="moments-header">
+                              📍 Found {content.moments.length} relevant moment{content.moments.length > 1 ? 's' : ''}:
+                            </div>
+                            <ul className="moments-list">
+                              {content.moments.map((moment, idx) => (
+                                <li key={idx} className="moment-item">
+                                  <span 
+                                    className="moment-timestamp"
+                                    onClick={() => handleTimestampClick(moment.second)}
+                                  >
+                                    ⏱️ {moment.timestamp}
+                                  </span>
+                                  <div className="moment-description">
+                                    <div className="moment-summary">{moment.summary}</div>
+                                    <div className="moment-details">{moment.details}</div>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="moments-footer">
+                              💡 Click any timestamp to jump to that moment
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )
+                }
+                
+                // Fallback for old format messages (plain string)
+                if (typeof content === 'string') {
+                  const formattedParts = formatMessage(content, message.timestamps || [])
+                  return (
+                    <div key={index} className="message assistant-message">
+                      <div className="message-content">
+                        {formattedParts.map((part, partIndex) => {
+                          if (part.type === 'timestamp') {
+                            return (
+                              <span
+                                key={partIndex}
+                                className="timestamp-link"
+                                onClick={() => handleTimestampClick(part.seconds)}
+                              >
+                                {part.content}
+                              </span>
+                            )
+                          }
+                          return <span key={partIndex}>{part.content}</span>
+                        })}
+                      </div>
+                    </div>
+                  )
+                }
+                
+                // Fallback - just show error-like message
                 return (
-                  <div
-                    key={index}
-                    className={`message ${message.role === 'user' ? 'user-message' : 'assistant-message'}`}
-                  >
+                  <div key={index} className="message assistant-message">
                     <div className="message-content">
-                      {formattedParts.map((part, partIndex) => {
-                        if (part.type === 'timestamp') {
-                          return (
-                            <span
-                              key={partIndex}
-                              className="timestamp-link"
-                              onClick={() => handleTimestampClick(part.seconds)}
-                            >
-                              {part.content}
-                            </span>
-                          )
-                        }
-                        return <span key={partIndex}>{part.content}</span>
-                      })}
+                      Error displaying message
                     </div>
                   </div>
                 )
@@ -379,6 +450,57 @@ function ChatBox({ videoId, onSeekToTime, isAnalyzing, userRole, onRoleChange })
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {currentMessages.length === 0 && (
+            <div className="suggestions-container">
+              <div className="suggestions-label">💡 Try asking:</div>
+              <div className="suggestion-chips">
+                {userRole === 'actor' ? (
+                  <>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("When did the character get angry?")}>
+                    When did the character get angry?
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("Order the anger scenes by the intensity of the emotion")}>
+                    Order the anger scenes by the intensity of the emotion
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("Show me confrontational moments between characters")}>
+                    Show me confrontational moments between characters
+                    </button>
+                    
+                  </>
+                ) : userRole === 'director' ? (
+                  <>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("⁠Show me the scene where light suddenly transitions")}>
+                    ⁠Show me the scene where light suddenly transitions
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("What are the wide angle shots?")}>
+                    What are the wide angle shots?
+
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick(" ⁠⁠Which timestamp has the closeup shot?")}>
+                    ⁠⁠Which timestamp has the closeup shot?
+                    </button>
+                    
+                  </>
+                ) : (
+                  <>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("When did this object first appear in the video? ")}>
+                    When did this object first appear in the video? 
+
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("Tell me the frames with weapons/tool?")}>
+                    Tell me the frames with weapons/tool?
+
+                    </button>
+                    <button className="suggestion-chip" onClick={() => handleExampleClick("Sequence the objects with timestamps")}>
+                    Sequence the objects with timestamps
+                    </button>
+                    
+                  </>
+                )}
+              </div>
+            </div>
+          )}
 
           <div className="chat-input-container">
             <textarea

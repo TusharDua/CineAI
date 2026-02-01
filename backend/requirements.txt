@@ -8,4 +8,11 @@ fastapi
 uvicorn[standard]
 python-multipart
 scenedetect[opencv]
-
+opencv-python
+pyaudio 
+pillow
+mss
+google-cloud-storage
+google-cloud-run
+google-cloud-tasks
+gunicorn

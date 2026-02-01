@@ -1,0 +1,11 @@
+{
+  "video_id": "66c7654a-a69f-4007-9412-c965eedcc774",
+  "status": "analyzing_frames",
+  "message": "Analyzing frames with Gemini...",
+  "timestamp": 1769867365.22688,
+  "overall_progress": {
+    "percentage": 10,
+    "stage": "analyzing_frames",
+    "stage_progress": 0.0
+  }
+}

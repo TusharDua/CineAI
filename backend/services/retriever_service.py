@@ -68,6 +68,9 @@ class RetrieverService:
             if role == "director":
                 # For director: emphasize technical/cinematography aspects
                 enhanced_query = f"Technical cinematography and filmmaking: {query}. Focus on shot types, camera angles, lighting, and visual composition."
+            elif role == "producer":
+                # For producer: emphasize production/commercial aspects and OBJECTS/PROPS
+                enhanced_query = f"Production and commercial aspects: {query}. Focus on visible objects, props, equipment, vehicles, production value, locations, sets, costumes, budget indicators, and commercial appeal. Pay special attention to specific items and objects present in the scene."
             else:
                 # For actor: emphasize content/performance aspects
                 enhanced_query = f"Scene content and performance: {query}. Focus on characters, actions, emotions, and story elements."
@@ -101,14 +104,19 @@ class RetrieverService:
         Args:
             video_id: Unique video identifier
             query: Search query
-            role: User role - "actor" (content search) or "director" (technical search)
+            role: User role - "actor" (content search), "director" (technical search), or "producer" (production search)
             top_k: Number of results to return
             
         Returns:
-            List of result dictionaries
+            List of result dictionaries with duplicate timestamps filtered out
         """
         # Map role to index type
-        index_type = "technical" if role == "director" else "content"
+        if role == "director":
+            index_type = "technical"
+        elif role == "producer":
+            index_type = "production"
+        else:  # actor
+            index_type = "content"
         
         # Load index and metadata
         data = self._load_index(video_id, index_type)
@@ -119,24 +127,41 @@ class RetrieverService:
         # Generate query embedding with role-specific context
         query_embedding = self._get_query_embedding(query, client, role)
         
+        # For removing duplicates, fetch more results initially
+        fetch_k = top_k * 3 if role == "producer" else top_k * 2
+        
         # Search in FAISS index
-        scores, indices = index.search(query_embedding, min(top_k, index.ntotal))
+        scores, indices = index.search(query_embedding, min(fetch_k, index.ntotal))
         
         # Retrieve metadata for results
         results = []
+        seen_timestamps = set()
+        TIME_THRESHOLD = 3  # seconds - consider timestamps within 3 seconds as duplicates
+        
         for score, idx in zip(scores[0], indices[0]):
             if idx < 0:
                 continue
             
             meta = metadata[idx]
+            second = meta["second"]
+            
+            # Check if this timestamp is too close to an already added one
+            is_duplicate = False
+            for seen_ts in seen_timestamps:
+                if abs(second - seen_ts) <= TIME_THRESHOLD:
+                    is_duplicate = True
+                    break
+            
+            if is_duplicate:
+                continue
             
             # Extract role-specific information
             llava_json = meta.get("llava_json", {})
             result = {
-                "second": meta["second"],
+                "second": second,
                 "frame_path": meta["frame_path"],
                 "score": float(score),
-                "timestamp": self._format_timestamp(meta["second"]),
+                "timestamp": self._format_timestamp(second),
                 "scene_id": meta.get("scene_id", "scene_000")
             }
             
@@ -144,6 +169,9 @@ class RetrieverService:
             if role == "director":
                 result["technical_info"] = llava_json.get("technical_info", {})
                 result["embedding_text"] = meta.get("embedding_text_technical", "")
+            elif role == "producer":
+                result["production_info"] = llava_json.get("production_info", {})
+                result["embedding_text"] = meta.get("embedding_text_production", "")
             else:  # actor
                 result["content_info"] = llava_json.get("content_info", {})
                 result["embedding_text"] = meta.get("embedding_text_content", "")
@@ -153,6 +181,14 @@ class RetrieverService:
             result["scene_summary"] = content_info.get("scene_summary", "")
             
             results.append(result)
+            seen_timestamps.add(second)
+            
+            # Stop if we have enough unique results
+            if len(results) >= top_k:
+                break
+        
+        # Sort by timestamp (ascending order)
+        results.sort(key=lambda x: x['second'])
         
         return results
     
@@ -264,6 +300,23 @@ class RetrieverService:
                     f"  Visual Mood: {tech.get('visual_mood', 'unknown')}\n"
                     f"  Scene: {summary}"
                 )
+            elif role == "producer":
+                prod = result.get("production_info", {})
+                props = prod.get("props", [])
+                props_str = ", ".join([str(p) for p in props]) if props else "none"
+                
+                context_parts.append(
+                    f"Moment {idx} at {timestamp} (second {second}):\n"
+                    f"  Production Value: {prod.get('production_value', 'unknown')}\n"
+                    f"  Location Type: {prod.get('location_type', 'unknown')}\n"
+                    f"  Set Design: {prod.get('set_design', 'unknown')}\n"
+                    f"  **Props/Objects: {props_str}**\n"  # Emphasized
+                    f"  Costumes: {prod.get('costumes', 'unknown')}\n"
+                    f"  Commercial Appeal: {prod.get('commercial_appeal', 'unknown')}\n"
+                    f"  Budget: {prod.get('budget_indication', 'unknown')}\n"
+                    f"  Pacing: {prod.get('pacing', 'unknown')}\n"
+                    f"  Scene: {summary}"
+                )
             else:  # actor
                 content = result.get("content_info", {})
                 
@@ -316,6 +369,15 @@ Based on the retrieved moments with detailed technical analysis, answer the user
 Be specific, accurate, and honest. If moments truly match, explain which ones and why. 
 If they don't match well, say so and suggest what to search for instead.
 Focus on technical and visual aspects."""
+        elif role == "producer":
+            system_prompt = """You are an experienced film producer analyzing production elements and commercial aspects.
+Based on the retrieved moments with detailed production analysis, answer the user's question about production value, locations, sets, props, costumes, budget indicators, and commercial viability.
+
+**IMPORTANT:** Pay special attention to visible objects, props, equipment, and items in the scene. When the user asks about objects (like "find car" or "show phone"), prioritize mentioning the specific props and objects present.
+
+Be specific, accurate, and honest. If moments truly match, explain which ones and why, highlighting the specific objects/props found.
+If they don't match well, say so and suggest what to search for instead.
+Focus on objective, business-oriented production elements and specific visible items."""
         else:
             system_prompt = """You are an expert video content analyst specializing in story, performance, emotions, and atmosphere.
 Based on the retrieved moments with detailed content analysis, answer the user's question about characters, emotions, actions, settings, and narrative elements.
@@ -386,6 +448,9 @@ RELEVANT: [Comma-separated moment numbers like "1, 3, 5" or "none"]"""
                 if 0 <= idx < len(results):
                     relevant_moments.append(results[idx])
             
+            # Sort relevant moments by timestamp (ascending order for chronological viewing)
+            relevant_moments.sort(key=lambda x: x['second'])
+            
             # If LLM said none are relevant but we have results, include top 1 with disclaimer
             if not relevant_moments and results:
                 relevant_moments = [results[0]]
@@ -424,11 +489,14 @@ RELEVANT: [Comma-separated moment numbers like "1, 3, 5" or "none"]"""
                 if second not in all_candidates or result["score"] > all_candidates[second]["score"]:
                     all_candidates[second] = result
         
-        # Convert back to list and sort by score
+        # Convert back to list and sort by score first to get best matches
         raw_results = sorted(all_candidates.values(), key=lambda x: x["score"], reverse=True)[:top_k]
         
+        # Then sort by timestamp for chronological display
+        raw_results.sort(key=lambda x: x["second"])
+        
         # Load client for LLM
-        index_type = "technical" if role == "director" else "content"
+        index_type = "technical" if role == "director" else "production" if role == "producer" else "content"
         data = self._load_index(video_id, index_type)
         client = data["client"]
         

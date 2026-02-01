@@ -1,0 +1,15 @@
+node_modules
+.git
+.env
+.venv
+venv
+__pycache__
+*.pyc
+.DS_Store
+backend/uploads
+backend/frames
+backend/analysis_output
+backend/analysis_status
+backend/vector_databases
+backend/video_frames
+frontend/dist

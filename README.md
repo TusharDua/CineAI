@@ -262,31 +262,6 @@ POST /chat
 
 ---
 
-## 🚢 Deployment
-
-### Option 1: Traditional VM (Simple)
-```bash
-# See deployment/VM_SIMPLE_GUIDE.md for step-by-step
-# Estimated time: ~60 minutes
-# Monthly cost: ~$120
-```
-
-### Option 2: Cloud Run (Scalable)
-```bash
-# See deployment/README.md for Cloud Run setup
-# Estimated time: ~20 minutes
-# Monthly cost: $5-200 (depends on usage)
-```
-
-### Option 3: Docker
-```bash
-# Build and run with Docker
-docker build -t cineai .
-docker run -p 8080:8080 --env-file backend/.env cineai
-```
-
----
-
 ## 📊 Example Workflow
 
 1. **Upload Video**: Drag & drop or browse for video file
